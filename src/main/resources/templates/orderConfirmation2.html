@@ -29,21 +29,20 @@
       </th>
     </tr>
     <tr>
-      <td><b>Client Name </b></td>
-      <td><span>Petko Petkov</span></td>
+      <td><b>Client Name</b></td>
+      <td th:text="${clientName}">Petko Petkov</td>
     </tr>
     <tr>
       <td><b>Client IP Address</b></td>
-<!--      th:text="${clientIP}"-->
-      <td><span>IP</span></td>
+      <td>127.0.0.1</td>
     </tr>
     <tr>
       <td><b>Ticket for Movie</b></td>
-      <td><span th:text="${movieTitle}"></span></td>
+      <td th:text="${selectedMovie}">Oppenheimer</td>
     </tr>
     <tr>
       <td><b>Number of tickets</b></td>
-      <td><span th:text="${numTickets}"></span></td>
+      <td th:text="${numTickets}">2</td>
     </tr>
   </table>
 </section>

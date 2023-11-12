@@ -30,7 +30,11 @@
       <input type="radio" th:name="selectedMovie" th:value="${movie.title}">
       Title: <span th:text="${movie.title}"></span>,
       Summary: <span th:text="${movie.summary}"></span>,
-      Rating: <span th:text="${movie.rating}"></span><br>
+      Rating: <span th:text="${movie.rating}"></span>,
+      Production: <span th:text="${movie.production.getName()}"></span>
+      <button>Edit</button>
+      <button>Delete</button>
+      <br>
     </label><br>
 
   <h2>Choose number of tickets:</h2>

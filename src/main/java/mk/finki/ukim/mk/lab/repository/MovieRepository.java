@@ -1,12 +1,15 @@
 package mk.finki.ukim.mk.lab.repository;
 
+import lombok.Data;
 import mk.finki.ukim.mk.lab.bootstrap.DataHolder;
 import mk.finki.ukim.mk.lab.model.Movie;
+import mk.finki.ukim.mk.lab.model.Production;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -35,8 +38,21 @@ public class MovieRepository {
                 result.add(movie);
             }
         }
-
         return result;
+    }
 
+    public Optional<Movie> save(String movieTitle, String summary, double rating, Production production){
+        Movie movie = new Movie(movieTitle,summary,rating,production);
+        DataHolder.movies.removeIf(i->i.getTitle().equals(movie.getTitle()));
+        DataHolder.movies.add(movie);
+        return Optional.of(movie);
+    }
+
+    public Optional<Movie> findById(Long id){
+        return DataHolder.movies.stream().filter(i->i.getId().equals(id)).findFirst();
+    }
+
+    public void deleteById(Long id){
+        DataHolder.movies.removeIf(movie -> movie.getId().equals(id));
     }
 }
